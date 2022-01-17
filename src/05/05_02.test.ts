@@ -1,5 +1,5 @@
 import {CityType} from "../02/02";
-import {demolishHousesOnTheStreet, getBuildingsWithStaffCountGreaterThen} from "./04_2";
+import {createMessages, getStreetsTitleOfGovermentBuildings} from "./05_02";
 
 let city: CityType;
 
@@ -28,45 +28,38 @@ beforeEach(() => {
                     street: {title: "Happy street"}
                 }
             }
-],
+        ],
         governmentBuildings: [
             {
-            type: "HOSPITAL",
+                type: "HOSPITAL",
                 address: {street: {title:"Central Str"}, number: 12},
                 budget: 200000, staffCount: 200
             },{
-            type: "FIRE-STATION",
+                type: "FIRE-STATION",
                 address: {street: {title:"South Str"}, number: 12},
                 budget: 500000, staffCount: 1000
             }
         ],
         citizensNumber: 1000000
-}
+    }
 })
 
 
-test("Houses should be destroyed", () => {
-    demolishHousesOnTheStreet(city, "Happy street")
+test("list of streets titles of goverments buildings", () => {
+    let streetsNames = getStreetsTitleOfGovermentBuildings(
+        city.governmentBuildings);
 
-
-    expect(city.houses.length).toBe(1)
-    expect(city.houses[0].id).toBe(1)
+    expect(streetsNames.length).toBe(2)
+    expect(streetsNames[0]).toBe("Central Str")
+    expect(streetsNames[1]).toBe("South Str")
 })
-/*
-
-test("list of streets titles of houses", () => {
-    let happyHauses = getHousesOnTheStreet(city.houses, "Happy street");
-    let whiteHauses = getHousesOnTheStreet(city.houses, "White street");
 
 
-    expect(happyHauses).toBe(2)
-    expect(whiteHauses).toBe(1)
-})*/
+test("create greeting messages for streets", () => {
+    let messages = createMessages(city.houses);
 
-test("buildings with correct staff count", () => {
-    let buildings = getBuildingsWithStaffCountGreaterThen(city.governmentBuildings, 500);
-
-
-    expect(buildings.length).toBe(1)
-    expect(buildings[0].type).toBe("FIRE-STATION")
+    expect(messages.length).toBe(3)
+    expect(messages[0]).toBe("Hello guys from White street")
+    expect(messages[1]).toBe("Hello guys from Happy street")
+    expect(messages[2]).toBe("Hello guys from Happy street")
 })
