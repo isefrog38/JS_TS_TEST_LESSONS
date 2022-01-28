@@ -20,3 +20,5 @@ test("should update corresponding user from obj", () => {
 
     expect(users["1"].name).toBe("Ekaterina");
 })
+
+
