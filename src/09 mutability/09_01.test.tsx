@@ -25,7 +25,7 @@ test("reference type  test", () => {
 
     expect(user.age).toBe(1000)
 })
-
+/*
 test("array reference test", () => {
 
     let users: UserType = {
@@ -38,7 +38,7 @@ test("array reference test", () => {
     admins.push({name: "Pavel", age: 25});
 
     expect(users[2]).toEqual({name: "Pavel", age: 25})
-})
+})*/
 
 test("value test", () => {
 
@@ -50,7 +50,7 @@ test("value test", () => {
 
     expect(usersCount).toBe(100)  /// примитивы не перенаправляет
 })
-
+/*
 test("reference type  test", () => {
 
     let user = {
@@ -73,7 +73,7 @@ test("reference type  test", () => {
 
     expect(user.address).toBe(user2.address)
     expect(user2.address.title).toBe("Gomel")
-})
+})*/
 
 test("reference type array test", () => {
 

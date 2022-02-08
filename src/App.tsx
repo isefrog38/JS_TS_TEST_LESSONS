@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {CompType, updateCompaniesUsers} from "./10_immutability/10_01";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      {liElementsInObj}
+
     </div>
   );
 }
